@@ -51,9 +51,7 @@ function bundle() {
     .bundle()
     .on('error', notify)
     .pipe(source('main.js'))
-    .pipe(streamify(uglify({
-            file:'main.js'
-      })))
+    .pipe(streamify(uglify({ file:'main.js' })))
     .pipe(gulp.dest('./'))
 }
 bundler.on('update', bundle);
