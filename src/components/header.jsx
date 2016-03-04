@@ -7,7 +7,7 @@ var Actions = require('../actions');
 
 
 module.exports = React.createClass({
-        
+
     mixins: [
         Reflux.listenTo(TopicStore, 'onChange')
     ],

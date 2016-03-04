@@ -9,6 +9,10 @@ var server = require('gulp-server-livereload');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
+var uglify = require('gulp-uglify');
+var babelify = require('babelify');
+var streamify = require('gulp-streamify');
+
 
 var notify = function(error) {
   var message = 'In: ';
@@ -47,6 +51,9 @@ function bundle() {
     .bundle()
     .on('error', notify)
     .pipe(source('main.js'))
+    .pipe(streamify(uglify({
+            file:'main.js'
+      })))
     .pipe(gulp.dest('./'))
 }
 bundler.on('update', bundle);
